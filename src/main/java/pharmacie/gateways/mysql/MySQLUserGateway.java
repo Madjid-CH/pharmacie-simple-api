@@ -2,6 +2,7 @@ package pharmacie.gateways.mysql;
 
 import pharmacie.entities.User;
 import pharmacie.gateways.UserGateway;
+import pharmacie.usecases.authentication.login.SignUpInformation;
 
 import java.sql.*;
 import java.util.UUID;
@@ -48,6 +49,19 @@ public class MySQLUserGateway implements UserGateway {
       throw new RuntimeException(e);
     }
     return user;
+  }
+
+  @Override
+  public User register(SignUpInformation info) {
+    var id = UUID.randomUUID().toString();
+    try (var stat = connection.createStatement()) {
+      var query = "INSERT INTO user (`id`, `name`, `role`, `password`) " +
+              "VALUES ('" + id + "','" + info.username() + "','" + "client" + "','" + info.Password() + "');";
+      stat.executeUpdate(query);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return findUserById(id);
   }
 
   private User verifyUserFromDB(String username, String password, Statement stat) {

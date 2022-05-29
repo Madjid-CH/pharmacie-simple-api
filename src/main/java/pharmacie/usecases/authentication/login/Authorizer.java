@@ -21,7 +21,13 @@ public class Authorizer {
   @PostMapping("/login")
   public User authorize(@RequestBody LoginInformation loginInformation) {
     User user = gateway.verifyUser(loginInformation.username(), loginInformation.password());
-    gateKeeper.setLoggedInUser(user);
+    if (user != null)
+      gateKeeper.setLoggedInUser(user);
     return user;
+  }
+
+  @PostMapping("signup")
+  public User register(@RequestBody SignUpInformation info) {
+    return gateway.register(info);
   }
 }
