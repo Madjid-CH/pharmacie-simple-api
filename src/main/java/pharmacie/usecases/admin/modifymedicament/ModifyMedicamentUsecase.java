@@ -8,6 +8,7 @@ public class ModifyMedicamentUsecase implements ModifyMedicamentInputBoundary {
     Context.medicamentGateway.modify(requestModel.medicament);
     var responseModel = new ModifyMedicamentResponseModel();
     responseModel.MedicamentModified = true;
-    outputBoundary.present(responseModel);
+    if (outputBoundary != null)
+      outputBoundary.present(responseModel);
   }
 }

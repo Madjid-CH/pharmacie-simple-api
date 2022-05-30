@@ -3,6 +3,7 @@ package pharmacie.usecases.client.showsales;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import pharmacie.Context;
 import pharmacie.entities.Medicament;
 import pharmacie.entities.Sale;
 import pharmacie.entities.User;
@@ -18,20 +19,20 @@ import java.util.List;
 @RequestMapping("/sales")
 public class ShowSalesController implements Controller {
 
-    private final SalesGateway gateway;
+    private final ShowSalesUseCase useCase;
 
     public ShowSalesController() {
-      this.gateway = new MySQLSaleGateway();
+      useCase = new ShowSalesUseCase();
     }
 
     @GetMapping
     public List<Sale> findAllByUser(@RequestBody User user) {
-      return gateway.findAllSalesByUser(user);
+      return Context.salesGateway.findAllSalesByUser(user);
     }
 
     @GetMapping("/med")
     public List<Sale> findAllByMedicament(@RequestBody Medicament medicament) {
-      return gateway.findAllSaleByMadicament(medicament);
+      return Context.salesGateway.findAllSaleByMadicament(medicament);
     }
 
 }

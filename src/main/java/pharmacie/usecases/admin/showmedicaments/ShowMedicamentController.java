@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pharmacie.Context;
 import pharmacie.entities.Medicament;
 import pharmacie.gateways.MedicamentGateway;
 import pharmacie.gateways.mysql.MySQLMedicamentGateway;
@@ -15,16 +16,9 @@ import java.util.List;
 @RequestMapping("/medicament")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ShowMedicamentController implements Controller {
-
-  private final MedicamentGateway gateway;
-
-  public ShowMedicamentController() {
-    this.gateway = new MySQLMedicamentGateway();
-  }
-
   @GetMapping
   public List<Medicament> findAll() {
-    return gateway.findAllMedicaments();
+    return Context.medicamentGateway.findAllMedicaments();
   }
 }
 

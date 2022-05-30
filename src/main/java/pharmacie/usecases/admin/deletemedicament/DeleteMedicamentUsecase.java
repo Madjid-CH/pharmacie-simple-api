@@ -11,6 +11,7 @@ public class DeleteMedicamentUsecase implements DeleteMedicamentInputBoundary {
     Context.medicamentGateway.delete(requestModel.medicament);
     var responseModel = new DeleteMedicamentResponseModel();
     responseModel.medicamentDeleted = true;
-    presenter.present(responseModel);
+    if (presenter != null)
+      presenter.present(responseModel);
   }
 }

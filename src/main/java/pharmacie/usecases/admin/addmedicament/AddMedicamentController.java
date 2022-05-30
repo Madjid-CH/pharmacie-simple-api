@@ -2,12 +2,11 @@ package pharmacie.usecases.admin.addmedicament;
 
 import org.springframework.web.bind.annotation.*;
 import pharmacie.entities.Medicament;
-import pharmacie.entities.User;
 import pharmacie.gateways.MedicamentGateway;
 import pharmacie.gateways.mysql.MySQLMedicamentGateway;
 import pharmacie.usecases.Controller;
 
-import java.util.List;
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/medicament")
@@ -21,15 +20,12 @@ public class AddMedicamentController implements Controller {
   }
 
   @PostMapping
-  public User addMedicament(@RequestBody User user) {
-//      var requestModel = new AddMedicamentRequestModel();
-//      requestModel.medicament = medicament;
-//    System.out.println(medicament);
-//
-////      usecase.addMedicament(null, requestModel,null);
-//      gateway.save(medicament);
-    user.setId("lkmsdjqlkmdqsqsdjklmf");
-
-    return user;
+  public boolean addMedicament(@RequestBody MedicamentInfo medicament) {
+    var requestModel = new AddMedicamentRequestModel();
+    var dosage = new Medicament.Dosage(8, "ml");
+    requestModel.medicament = new Medicament(medicament.name(), medicament.quantity(),
+            LocalDate.now(), dosage, medicament.price());
+    gateway.save(requestModel.medicament);
+    return true;
   }
 }
