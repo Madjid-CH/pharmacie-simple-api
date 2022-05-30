@@ -8,6 +8,7 @@ public class AddSaleUsecase implements AddSaleInputBoundary {
     Context.salesGateway.save(requestModel.sale);
     var responseModel = new AddSaleResponseModel();
     responseModel.saleSaved = true;
-    outputBoundary.present(responseModel);
+    if (outputBoundary != null)
+      outputBoundary.present(responseModel);
   }
 }

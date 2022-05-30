@@ -15,6 +15,7 @@ public class DeleteSaleUsecase implements DeleteSaleInputBoundary {
     Context.salesGateway.delete(requestModel.sale);
     var responseModel = new DeleteSaleResponseModel();
     responseModel.saleDeleted = true;
-    presenter.present(responseModel);
+    if (presenter != null)
+      presenter.present(responseModel);
   }
 }

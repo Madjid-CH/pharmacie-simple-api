@@ -8,6 +8,7 @@ public class ModifySaleUsecase implements ModifySaleInputBoundary {
     Context.salesGateway.modify(requestModel.sale);
     var responseModel = new ModifySaleResponseModel();
     responseModel.saleModified = true;
-    outputBoundary.present(responseModel);
+    if (outputBoundary != null)
+      outputBoundary.present(responseModel);
   }
 }

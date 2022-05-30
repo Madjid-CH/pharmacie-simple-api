@@ -1,15 +1,13 @@
 package pharmacie.usecases.admin.deletemedicament;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pharmacie.entities.Medicament;
 import pharmacie.gateways.MedicamentGateway;
 import pharmacie.gateways.mysql.MySQLMedicamentGateway;
 
 @RestController
 @RequestMapping("/medicament")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class DeleteMedicamentController {
   private final DeleteMedicamentUsecase usecase;
 

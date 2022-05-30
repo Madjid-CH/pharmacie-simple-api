@@ -10,6 +10,7 @@ import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/medicament")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AddMedicamentController implements Controller {
   private final MedicamentGateway gateway;
   private final AddMedicamentUsecase usecase;

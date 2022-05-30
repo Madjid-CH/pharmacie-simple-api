@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/medicament")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ModifyMedicamentController {
 
   private final ModifyMedicamentUsecase usecase;
