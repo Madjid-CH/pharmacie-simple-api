@@ -47,7 +47,7 @@ class ShowMedicamentUseCaseTest {
 
     @BeforeEach
     public void setupCodecast() {
-      medicament = Context.medicamentGateway.save(new Medicament("med", 15, LocalDate.EPOCH, null));
+      medicament = Context.medicamentGateway.save(new Medicament("med", 15, LocalDate.EPOCH, null, 0));
     }
 
     @Test

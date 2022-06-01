@@ -10,13 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MySQLMedicamentGatewayTest {
 
-  private MySQLMedicamentGateway gateway = new MySQLMedicamentGateway();
+  private final MySQLMedicamentGateway gateway = new MySQLMedicamentGateway();
   private Medicament medicament;
 
   @BeforeEach
   void setUp() {
     var dosage = new Medicament.Dosage(78, "ml/g");
-    medicament = new Medicament("medName", 78, LocalDate.EPOCH, dosage);
+    medicament = new Medicament("medName", 78, LocalDate.EPOCH, dosage, 0);
     medicament.setId("med-id");
   }
 
@@ -53,7 +53,9 @@ public class MySQLMedicamentGatewayTest {
 
   @Test
   void canModifyAMedicament() {
-    var newMedicament = new Medicament("new med_name", 79, LocalDate.of(2000,5,5), medicament.getDosage());
+    var newMedicament = new Medicament(
+            "new med_name", 79, LocalDate.of(2000,5,5),
+            medicament.getDosage(), 0);
     newMedicament.setId(medicament.getId());
     gateway.modify(newMedicament);
 

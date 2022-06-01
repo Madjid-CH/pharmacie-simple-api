@@ -1,16 +1,11 @@
 package pharmacie;
 
 
+import lombok.Getter;
+import lombok.Setter;
 import pharmacie.entities.User;
 
 public class GateKeeper {
+  @Setter @Getter
   private User loggedInUser;
-
-  public void setLoggedInUser(User loggedInUser) {
-    this.loggedInUser = loggedInUser;
-  }
-
-  public User getLoggedInUser() {
-    return loggedInUser;
-  }
 }

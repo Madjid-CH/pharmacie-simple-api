@@ -44,9 +44,10 @@ public class AddSaleUsecaseTest {
 
     @BeforeEach
     public void setupSale() {
-      var experationDate = LocalDate.of(2025,11,1);
+      var expirationDate = LocalDate.of(2025,11,1);
       var dosage = new Medicament.Dosage(0.5, "ml/g");
-      var medicament = Context.medicamentGateway.save(new Medicament("med", 15, experationDate, dosage));
+      var medicament = Context.medicamentGateway.save(
+              new Medicament("med", 15, expirationDate, dosage, 123));
       sale = new Sale(user.getId(), medicament.getId(), 1, 100, LocalDate.now());
     }
 

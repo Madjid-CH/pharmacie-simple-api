@@ -21,7 +21,7 @@ public class ShowSalesUseCaseTest {
   @BeforeEach
   public void setUp() {
     TestSetup.setupContext();
-    user = Context.userGateway.save(new User("User", "clinet"));
+    user = Context.userGateway.save(new User("User", "client"));
     useCase = new ShowSalesUseCase();
     presenterSpy = new ShowSalesOutputBoundarySpy();
   }
@@ -50,15 +50,15 @@ public class ShowSalesUseCaseTest {
     private Medicament medicament;
 
     @BeforeEach
-    public void setupCodecast() {
+    public void setupSale() {
       var date = LocalDate.of(2022, 6, 9);
       var dosage = new Medicament.Dosage(0.5, "ml/g");
-      medicament = Context.medicamentGateway.save(new Medicament("med", 15, date, dosage));
+      medicament = Context.medicamentGateway.save(new Medicament("med", 15, date, dosage, 25));
       sale = new Sale(user.getId(), medicament.getName(), 2, 100, LocalDate.now());
     }
 
     @Test
-    public void oneIsPresented() throws Exception {
+    public void oneIsPresented() {
       Context.salesGateway.save(sale);
       presenterSpy = new ShowSalesOutputBoundarySpy();
 

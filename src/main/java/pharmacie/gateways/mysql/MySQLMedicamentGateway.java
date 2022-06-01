@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class MySQLMedicamentGateway implements MedicamentGateway {
-  private static Connection connection = Connector.getConnection();
+  private static final Connection connection = Connector.getConnection();
 
   @Override
   public List<Medicament> findAllMedicaments() {
@@ -44,7 +44,8 @@ public class MySQLMedicamentGateway implements MedicamentGateway {
     var medicamant = new Medicament(rs.getString("name"),
             rs.getInt("quantity"),
             LocalDate.parse(rs.getString("experation_date")),
-            new Medicament.Dosage(rs.getDouble("dosage"), "ml/g"));
+            new Medicament.Dosage(rs.getDouble("dosage"), "ml/g"),
+            rs.getInt("price"));
 
     medicamant.setId(rs.getString("id"));
     return medicamant;

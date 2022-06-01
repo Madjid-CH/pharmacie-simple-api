@@ -29,11 +29,11 @@ public class TestSetup {
 
     var date = LocalDate.of(2023, 12, 12);
     var dosage = new Medicament.Dosage(0.02, "mg/ml");
-    Medicament m1 = new Medicament("midicament1", 10, date, dosage);
+    Medicament m1 = new Medicament("midicament1", 10, date, dosage, 65);
 
     date = LocalDate.of(2023, 11, 11);
     dosage = new Medicament.Dosage(0.05, "mg/ml");
-    Medicament m2 = new Medicament("midicament2", 10, date, dosage);
+    Medicament m2 = new Medicament("midicament2", 10, date, dosage, 54);
 
     Context.medicamentGateway.save(m1);
     Context.medicamentGateway.save(m2);

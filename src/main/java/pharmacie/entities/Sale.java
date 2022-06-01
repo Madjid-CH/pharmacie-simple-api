@@ -1,31 +1,23 @@
 package pharmacie.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.time.LocalDate;
 
+@AllArgsConstructor
 public class Sale extends Entity {
+  @Getter
   final private String clientId;
+  @Getter
   final private String MedicamentName;
+  @Getter
   final private int quantity;
+  @Getter
   final private int price;
+  @Getter
   private final LocalDate sellingDate;
 
-  public Sale(String clientId, String medicamentName, int quantity, int price, LocalDate sellingDate) {
-    this.clientId = clientId;
-    MedicamentName = medicamentName;
-    this.quantity = quantity;
-    this.price = price;
-    this.sellingDate = sellingDate;
-  }
-
-  public String getClientId() { return clientId; }
-
-  public String getMedicamentName() { return MedicamentName; }
-
-  public int getQuantity() { return quantity; }
-
-  public int getPrice() { return price; }
-
-  public LocalDate getSellingDate() { return sellingDate; }
 
   @Override
   public boolean equals(Object obj) {

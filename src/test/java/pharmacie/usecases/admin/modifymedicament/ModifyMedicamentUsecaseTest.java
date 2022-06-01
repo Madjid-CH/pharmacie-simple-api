@@ -31,7 +31,7 @@ class ModifyMedicamentUsecaseTest {
     @Test
     public void useCaseWiring()
     {
-      requestModel.medicament = new Medicament("", 0,LocalDate.now(),null);
+      requestModel.medicament = new Medicament("", 0,LocalDate.now(),null, 0);
       useCase.modifyMedicament(user, requestModel, presenterSpy);
       assertNotNull(presenterSpy.responseModel);
     }
@@ -42,14 +42,14 @@ class ModifyMedicamentUsecaseTest {
 
       @BeforeEach
       public void setupSale() {
-        medicament = new Medicament("", 0,LocalDate.now(),null);
+        medicament = new Medicament("", 0,LocalDate.now(),null, 0);
         Context.medicamentGateway.save(medicament);
       }
 
       @Test
       public void shouldAddOneMedicamentToGateway() {
         var requestModel = new ModifyMedicamentRequestModel();
-        var modifiedMedicament = new Medicament("med-name", 0,medicament.getExperationDate(),null);
+        var modifiedMedicament = new Medicament("med-name", 0,medicament.getExperationDate(),null, 0);
         modifiedMedicament.setId(medicament.getId());
         requestModel.medicament = modifiedMedicament;
         useCase.modifyMedicament(user, requestModel, presenterSpy);

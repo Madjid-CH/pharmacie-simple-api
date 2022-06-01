@@ -50,7 +50,7 @@ class MySQLSaleGatewayTest {
 
   @Test
   void RetriveSalesByMedicament() {
-    var medicament = new Medicament("med2", 3, null, null);
+    var medicament = new Medicament("med2", 3, null, null, 8);
     var salesList = gateway.findAllSaleByMadicament(medicament);
 
     assertEquals(1, salesList.size());
@@ -62,7 +62,7 @@ class MySQLSaleGatewayTest {
   void canModifyASaleFromDB() {
     var modifiedSale = new Sale(s3.getClientId(), s3.getMedicamentName(), 55, 9789, s3.getSellingDate());
     modifiedSale.setId(s3.getId());
-    var medicament = new Medicament(s3.getMedicamentName(), 3, null, null);
+    var medicament = new Medicament(s3.getMedicamentName(), 3, null, null, 5);
     gateway.modify(modifiedSale);
 
     var newSalesList = gateway.findAllSaleByMadicament(medicament);

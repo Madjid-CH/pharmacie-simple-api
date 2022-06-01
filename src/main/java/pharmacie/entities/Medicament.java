@@ -1,40 +1,24 @@
 package pharmacie.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+
 import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
+@AllArgsConstructor
 public class Medicament extends Entity {
+  @Getter
   final private String name;
+  @Getter
   final private int quantity;
+  @Getter
   final private LocalDate experationDate;
+  @Getter
   final private Dosage dosage;
-  private int price = 0;
-
-
-  public Medicament(String name, int quantity, LocalDate experationDate, Dosage dosage) {
-    this.name = name;
-    this.quantity = quantity;
-    this.experationDate = experationDate;
-    this.dosage = dosage;
-  }
-
-
-  public Medicament(String name, int quantity, LocalDate experationDate, Dosage dosage, int price) {
-    this.name = name;
-    this.quantity = quantity;
-    this.experationDate = experationDate;
-    this.dosage = dosage;
-    this.price = price;
-  }
-
-  public String getName() { return name; }
-
-  public int getQuantity() { return quantity; }
-
-  public LocalDate getExperationDate() { return experationDate; }
-  public int getPrice() { return price; }
-
-  public Dosage getDosage() { return dosage; }
+  @Getter
+  private int price;
 
   public record Dosage(double quantity, String unit) { }
 }

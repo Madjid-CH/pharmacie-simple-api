@@ -1,18 +1,12 @@
 package pharmacie.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@AllArgsConstructor
 public class User extends Entity {
+  @Getter
   final private String userName;
+  @Getter
   final private String role;
-
-  public User(String userName, String role) {
-    this.userName = userName;
-    this.role = role;
-  }
-
-  public String getUserName() {
-    return userName;
-  }
-
-  public String getRole() { return role; }
 }
