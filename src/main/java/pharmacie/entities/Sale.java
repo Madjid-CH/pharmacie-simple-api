@@ -18,9 +18,29 @@ public class Sale extends Entity {
   @Getter
   private final LocalDate sellingDate;
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Sale sale)) return false;
+
+    if (getQuantity() != sale.getQuantity()) return false;
+    if (getPrice() != sale.getPrice()) return false;
+    if (!getClientId().equals(sale.getClientId())) return false;
+    if (getMedicamentName() != null ?
+            !getMedicamentName().equals(sale.getMedicamentName()) :
+            sale.getMedicamentName() != null)
+      return false;
+    return getSellingDate() != null ?
+            getSellingDate().equals(sale.getSellingDate()) : sale.getSellingDate() == null;
+  }
 
   @Override
-  public boolean equals(Object obj) {
-    return super.isSame((Entity) obj);
+  public int hashCode() {
+    int result = getClientId().hashCode();
+    result = 31 * result + (getMedicamentName() != null ? getMedicamentName().hashCode() : 0);
+    result = 31 * result + getQuantity();
+    result = 31 * result + getPrice();
+    result = 31 * result + (getSellingDate() != null ? getSellingDate().hashCode() : 0);
+    return result;
   }
 }

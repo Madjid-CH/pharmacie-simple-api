@@ -1,11 +1,9 @@
 package pharmacie.entities;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 
 import java.time.LocalDate;
-import java.util.GregorianCalendar;
 
 @AllArgsConstructor
 public class Medicament extends Entity {
@@ -14,7 +12,7 @@ public class Medicament extends Entity {
   @Getter
   final private int quantity;
   @Getter
-  final private LocalDate experationDate;
+  final private LocalDate expirationDate;
   @Getter
   final private Dosage dosage;
   @Getter

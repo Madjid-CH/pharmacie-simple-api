@@ -2,7 +2,6 @@ package pharmacie.usecases.admin.showmedicaments;
 
 import pharmacie.Context;
 import pharmacie.entities.Medicament;
-import pharmacie.entities.Sale;
 import pharmacie.entities.User;
 
 import java.util.List;
@@ -23,7 +22,7 @@ public class ShowMedicamentUseCase implements ShowMedicamentInputBoundary {
   private MedicamentSummary summarizeMedicament(Medicament medicament) {
     var summary = new MedicamentSummary();
     summary.medicamentName = medicament.getName();
-    summary.experationDate = medicament.getExperationDate();
+    summary.experationDate = medicament.getExpirationDate();
     summary.price = medicament.getPrice();
     return summary;
   }

@@ -49,14 +49,14 @@ class ModifyMedicamentUsecaseTest {
       @Test
       public void shouldAddOneMedicamentToGateway() {
         var requestModel = new ModifyMedicamentRequestModel();
-        var modifiedMedicament = new Medicament("med-name", 0,medicament.getExperationDate(),null, 0);
+        var modifiedMedicament = new Medicament("med-name", 0,medicament.getExpirationDate(),null, 0);
         modifiedMedicament.setId(medicament.getId());
         requestModel.medicament = modifiedMedicament;
         useCase.modifyMedicament(user, requestModel, presenterSpy);
 
         var savedMedicament = Context.medicamentGateway.findMedicamentByName(modifiedMedicament.getName());
         assertTrue(medicament.isSame(savedMedicament));
-        assertEquals(medicament.getExperationDate(), savedMedicament.getExperationDate());
+        assertEquals(medicament.getExpirationDate(), savedMedicament.getExpirationDate());
         assertNotEquals(modifiedMedicament.getName(), medicament.getName());
       }
     }

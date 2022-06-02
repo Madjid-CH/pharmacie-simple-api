@@ -1,8 +1,6 @@
 package pharmacie.gateways.mysql;
 
 import pharmacie.entities.Medicament;
-import pharmacie.entities.Sale;
-import pharmacie.entities.User;
 import pharmacie.gateways.MedicamentGateway;
 
 import java.sql.Connection;
@@ -75,7 +73,7 @@ public class MySQLMedicamentGateway implements MedicamentGateway {
       var query = "INSERT INTO `pharmacie`.`medicament` " +
               "(`id`, `name`, `quantity`, `experation_date`, `dosage`, `price`) " +
               "VALUES ('"+ medicament.getId() +"', '"+ medicament.getName() +"', '"+ medicament.getQuantity() +"'," +
-              " '"+ medicament.getExperationDate() +"', '"+ medicament.getDosage().quantity() +"', " +
+              " '"+ medicament.getExpirationDate() +"', '"+ medicament.getDosage().quantity() +"', " +
               "'"+ medicament.getPrice()+"');";
       stat.executeUpdate(query);
     } catch (SQLException e) {

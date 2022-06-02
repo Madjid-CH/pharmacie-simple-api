@@ -23,7 +23,7 @@ public class DeleteMedicamentController {
     return true;
   }
 
-  private DeleteMedicamentRequestModel handleRequest(String id) {
+    private DeleteMedicamentRequestModel handleRequest(String id) {
     var medicament = new Medicament(null, 0, null, null, 0);
     medicament.setId(id);
     var requestModel = new DeleteMedicamentRequestModel();
