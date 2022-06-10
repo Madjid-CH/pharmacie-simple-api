@@ -8,17 +8,18 @@ import pharmacie.entities.Sale;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AddSaleController {
 
-  private final AddSaleUsecase usecase;
+  private final AddSaleUsecase useCase;
 
   public AddSaleController() {
-    usecase = new AddSaleUsecase();
+    useCase = new AddSaleUsecase();
   }
 
   @PostMapping
-  public boolean findAllByUser(@RequestBody Sale sale) {
+  public boolean findAllSalesByUser(@RequestBody Sale sale) {
     var requestModel = new AddSaleRequestModel();
     requestModel.sale = sale;
-    usecase.addSale(null, requestModel, null);
+    useCase.addSale(null, requestModel, null);
     return true;
   }
+
 }

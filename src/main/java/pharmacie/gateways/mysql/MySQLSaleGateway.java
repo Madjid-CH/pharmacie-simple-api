@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class MySQLSaleGateway implements SalesGateway {
-  private static Connection connection = Connector.getConnection();
+  private static final Connection connection = Connector.getConnection();
 
 
   @Override
@@ -63,7 +63,6 @@ public class MySQLSaleGateway implements SalesGateway {
 
   private void saveSaleToDB(Sale sale) {
     try (var stat = connection.createStatement()) {
-      var date = sale.getSellingDate();
       var query = "INSERT INTO sale (`id`, `medicament_name`, `clientId`, `quantity`, `price`, `selling_date`) " +
               "VALUES ('" + sale.getId() + "','" + sale.getMedicamentName() + "','" + sale.getClientId() +
               "','" + sale.getQuantity() + "','" + sale.getPrice() + "','" + sale.getSellingDate() + "');";

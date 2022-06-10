@@ -9,8 +9,7 @@ import pharmacie.entities.User;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class MySQLSaleGatewayTest {
 
@@ -26,9 +25,9 @@ class MySQLSaleGatewayTest {
     lynda.setId("id");
     gateway = new MySQLSaleGateway();
     var date = LocalDate.now();
-    s1 = gateway.save(new Sale("id","med1",  2, 500, date) );
-    s2 = gateway.save(new Sale("id","med2",  2, 500, date));
-    s3 = gateway.save(new Sale("another id","med1",  3, 750, date));
+    s1 = gateway.save(new Sale("id", "med1", 2, 500, date));
+    s2 = gateway.save(new Sale("id", "med2", 2, 500, date));
+    s3 = gateway.save(new Sale("another id", "med1", 3, 750, date));
 
   }
 
@@ -43,9 +42,9 @@ class MySQLSaleGatewayTest {
   public void RetriveSalesByClient() {
     var salesList = gateway.findAllSalesByUser(lynda);
 
-    assertEquals(2, salesList.size());
-    assertTrue(salesList.contains(s1));
-    assertTrue(salesList.contains(s2));
+    assertAll( () -> assertEquals(2, salesList.size()),
+               () -> assertTrue(salesList.contains(s1)),
+               () -> assertTrue(salesList.contains(s2)));
   }
 
   @Test

@@ -3,8 +3,7 @@ package pharmacie.gateways.mysql;
 import org.junit.jupiter.api.Test;
 import pharmacie.entities.User;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class MySQLUserGatewayTest {
 
@@ -15,8 +14,9 @@ class MySQLUserGatewayTest {
 
     var sameUser = gateway.findUserById(user.getId());
 
-    assertTrue(user.isSame(sameUser));
-    assertEquals(user.getUserName(), sameUser.getUserName());
-    assertEquals(user.getRole(), sameUser.getRole());
+    assertAll(
+            () -> assertTrue(user.isSame(sameUser)),
+            () -> assertEquals(user.getUserName(), sameUser.getUserName()),
+            () -> assertEquals(user.getRole(), sameUser.getRole()));
   }
 }
